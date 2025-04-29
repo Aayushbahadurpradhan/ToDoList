@@ -163,6 +163,18 @@ function updateOrderAfterDrag() {
   savetodos();
 }
 
+function initSortableList(container) {
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const draggingItem = document.querySelector('.dragging');
+    const siblings = [...container.querySelectorAll('.item:not(.dragging)')];
+    let nextSibling = siblings.find(sibling => {
+      return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+    });
+    container.insertBefore(draggingItem, nextSibling);
+  });
+}
+
 function addtodo() {
   const title = todoTitleInput.value.trim();
   const description = todoDescInput.value.trim();
