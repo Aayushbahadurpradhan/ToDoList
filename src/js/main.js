@@ -67,7 +67,8 @@ function rendertodos() {
       <i class="fas fa-file"></i>
     </div>
   `;  
-
+    editBtn.className = 'see-toggle flex items-center gap-2';
+    editBtn.onclick = () => editTodo(todo.id);
 
     const deleteBtn = document.createElement('button');
     deleteBtn.innerHTML = `
@@ -82,6 +83,9 @@ function rendertodos() {
 
     footer.innerHTML = '';
 
+
+    const left = document.createElement('div');
+    left.appendChild(editBtn);
 
     const right = document.createElement('div');
     right.appendChild(deleteBtn);
