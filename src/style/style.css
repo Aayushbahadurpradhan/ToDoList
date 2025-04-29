@@ -90,12 +90,12 @@ h1, h2, h3 {
 
   .todo-card {
     @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow hover:shadow-lg transition;
-    height: 180px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: theme('colors.white');
-    @apply dark:bg-gray-800;
+    @apply dark:bg-gray-700;
   }
 
   .todo-description {
@@ -103,10 +103,10 @@ h1, h2, h3 {
     max-height: 3.75rem; 
     overflow: hidden;
     position: relative;
+    transition: max-height 0.3s ease-out; 
   }
-
   .todo-description.expanded {
-    max-height: 120px;
+    max-height: 180px; 
     overflow-y: auto;
     @apply pr-2;
   }
@@ -124,7 +124,7 @@ h1, h2, h3 {
   }
 
   .see-toggle {
-    @apply text-blue-500 hover:underline text-sm;
+    @apply text-blue-500 hover:underline text-sm mt-1 w-fit ml-auto;
   }
   .todo-completed-label {
     @apply text-green-500 text-sm font-medium ml-2;

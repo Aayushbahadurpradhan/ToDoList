@@ -263,4 +263,9 @@ todoDescInput.addEventListener('input', () => {
 });
 
 rendertodos();
-
+enableDropZone(todoTodos, 'todo');
+enableDropZone(incompleteTodos, 'incomplete');
+enableDropZone(completedTodos, 'completed');
+initSortableList(todoTodos);
+initSortableList(incompleteTodos);
+initSortableList(completedTodos);
