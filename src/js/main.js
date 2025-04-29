@@ -131,7 +131,6 @@ function rendertodos() {
   });
 }
 
-
 function addtodo() {
   const title = todoTitleInput.value.trim();
   const description = todoDescInput.value.trim();
