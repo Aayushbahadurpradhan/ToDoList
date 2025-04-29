@@ -175,6 +175,27 @@ function initSortableList(container) {
   });
 }
 
+function enableDropZone(container, newStatus) {
+  container.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const draggingItem = document.querySelector('.dragging');
+    const draggedId = Number(draggingItem.dataset.id);
+    const todo = todos.find(t => t.id === draggedId);
+
+    if (todo && todo.status !== newStatus) {
+      todo.status = newStatus;
+      savetodos();
+      rendertodos();
+    } else {
+      updateOrderAfterDrag();
+    }
+  });
+
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+}
+
 function addtodo() {
   const title = todoTitleInput.value.trim();
   const description = todoDescInput.value.trim();
