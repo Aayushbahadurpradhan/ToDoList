@@ -4,6 +4,9 @@ const addtodoBtn = document.getElementById('addtodoBtn');
 const todoTodos = document.getElementById('todoTodos');
 const incompleteTodos = document.getElementById('incompleteTodos');
 const completedTodos = document.getElementById('completedTodos');
+const todoTodos = document.getElementById('todoTodos');
+const incompleteTodos = document.getElementById('incompleteTodos');
+const completedTodos = document.getElementById('completedTodos');
 const themeToggle = document.getElementById('themeToggle');
 
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -112,26 +115,11 @@ function rendertodos() {
     }
     card.appendChild(footer);
 
-
-    card.addEventListener('dragstart', () => {
-      setTimeout(() => card.classList.add('dragging'), 0);
-    });
-    card.addEventListener('dragend', () => {
-      card.classList.remove('dragging');
-      updateOrderAfterDrag();
-    });
-
-    if (todo.status === 'todo') {
-      todoTodos.appendChild(card);
-    } else if (todo.status === 'incomplete') {
-      incompleteTodos.appendChild(card);
-    } else {
-      completedTodos.appendChild(card);
-    }
+    todoList.appendChild(card);
   });
 }
 
-function addtodo() {
+async function addtodo() {
   const title = todoTitleInput.value.trim();
   const description = todoDescInput.value.trim();
 
@@ -198,4 +186,3 @@ todoDescInput.addEventListener('input', () => {
 });
 
 rendertodos();
-
