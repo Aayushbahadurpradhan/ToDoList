@@ -60,6 +60,14 @@ function rendertodos() {
     const footer = document.createElement('div');
     footer.className = 'todo-footer flex justify-between items-center';
 
+    const editBtn = document.createElement('button');
+    editBtn.innerHTML = `
+    <div class="flex items-center gap-1">
+      <i class="fas fa-pencil-alt"></i>
+      <i class="fas fa-file"></i>
+    </div>
+  `;  
+
 
     const deleteBtn = document.createElement('button');
     deleteBtn.innerHTML = `
