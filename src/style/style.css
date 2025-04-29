@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+header {
+  background: #222;
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.logo:hover {
+  color: rgb(105, 255, 125);
+}
+main {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+section {
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dark body {
+  background-color: #000;
+  color: #fff;
+}
+h1, h2, h3 {
+  font-size: x-large;
+  font-weight: bold;
+}
+.dark section {
+  background-color: #1f2937;
+  color: #ddd;
+  border-color: #333;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .navbar {
+    @apply w-full flex justify-between items-center px-6 py-4 shadow-md bg-white dark:bg-gray-800;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition;
+  }
+
+  .btn-delete {
+    @apply text-red-500 hover:text-red-700 ml-2;
+  }
+
+  .input-todo {
+    @apply px-4 py-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white w-full;
+  }
+  textarea {
+    @apply resize-none;
+  }
+  .todo-input-box {
+    @apply bg-white dark:bg-gray-800 p-6 rounded-lg border-2 border-gray-200 dark:border-gray-700 shadow-md max-w-2xl w-full mx-auto;
+  }
+
+  .todo-card {
+    @apply p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow hover:shadow-lg transition;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: theme('colors.white');
+    @apply dark:bg-gray-800;
+  }
+
+  .todo-description {
+    @apply text-gray-700 dark:text-gray-300 text-sm px-1 mb-2;
+    max-height: 3.75rem; 
+    overflow: hidden;
+    position: relative;
+  }
+
+  .todo-description.expanded {
+    max-height: 120px;
+    overflow-y: auto;
+    @apply pr-2;
+  }
+
+  .todo-footer {
+    @apply flex justify-between items-center gap-4 mt-auto;
+  }
+  
+  .todo-checkbox {
+    @apply w-5 h-5 rounded-full border-gray-300 checked:bg-blue-600 focus:ring-2 focus:ring-blue-500;
+  }
+  
+  .todo-delete-btn {
+    @apply text-red-500 hover:text-red-700 transition;
+  }
+
+  .see-toggle {
+    @apply text-blue-500 hover:underline text-sm;
+  }
+  .todo-completed-label {
+    @apply text-green-500 text-sm font-medium ml-2;
+  }
+
+  .todo-completed-label {
+    @apply text-green-500 text-sm font-medium;
+  }
+
+  @media (max-width: 640px) {
+    .todo-card {
+      height: auto;
+      padding: 1rem;
+    }
+
+    .todo-description {
+      max-height: 80px;
+    }
+
+    .todo-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (min-width: 641px) {
+    .todo-footer {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
+@layer utilities {
+  .shadow-md-dark {
+    @apply shadow-md dark:shadow-gray-900;
+  }
+
+  .transition-theme {
+    @apply transition-colors duration-300;
+  }
+}
