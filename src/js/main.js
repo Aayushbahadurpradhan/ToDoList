@@ -162,7 +162,18 @@ function removetodo(id) {
   rendertodos();
 }
 
+function editTodo(id) {
+  const todo = todos.find(t => t.id === id);
+  const newTitle = prompt('Edit title:', todo.title);
+  const newDesc = prompt('Edit description:', todo.description);
 
+  if (newTitle !== null && newDesc !== null) {
+    todo.title = newTitle.trim();
+    todo.description = newDesc.trim();
+    savetodos();
+    rendertodos();
+  }
+}
 
 addtodoBtn.addEventListener('click', addtodo);
 
